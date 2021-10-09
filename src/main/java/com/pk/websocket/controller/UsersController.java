@@ -2,6 +2,7 @@ package com.pk.websocket.controller;
 
 import com.pk.websocket.storage.UserStorage;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class UsersController {
 
     @GetMapping("/registration/{username}")
+    @CrossOrigin
     public ResponseEntity<Void> register(@PathVariable String username){
         System.out.println("handling register user request " + username);
         try {
@@ -23,6 +25,7 @@ public class UsersController {
     }
 
     @GetMapping("/fetchAllUsers")
+    @CrossOrigin
     public Set<String> fetchAllUsers(){
 
         return UserStorage.getInstance().getUsers();
